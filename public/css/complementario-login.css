@@ -1,0 +1,57 @@
+.bg-gradient-primary{
+    background-color: rgb(5, 109, 99)!important;
+    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(10%,rgb(5, 109, 99)),to(rgb(5, 109, 99)));
+    background-image: linear-gradient(180deg,rgb(5, 109, 99) 10%,rgb(5, 109, 99) 100%);
+    background-size: cover
+}
+
+.bg-login{
+    background-color: #1E1F26;
+}
+
+form.user .form-control-user {
+    border-radius: 1rem;
+}
+
+.btn-primary{
+        background-color: rgb(5, 109, 99);
+        border-color: rgb(5, 109, 99);
+        color: white;
+}
+
+.btn-primary:hover{
+    background-color: rgb(5, 109, 99);
+    border-color: rgb(5, 109, 99);
+    color: white;
+}
+
+.btn-google {
+    color: #fff;
+    background-color: #ea4335;
+    border-color: #ea4335;
+}
+
+.btn-facebook {
+    color: #fff;
+    background-color: #3b5998;
+    border-color:  #3b5998;
+}
+
+.bg-login-image {
+    background-image: url();
+    background-position: center;
+    background-size: cover;
+}
+
+.input-error{
+    border: 1px solid rgb(190, 57, 57);
+    border-width: thick;
+}
+  
+.mensaje-error{
+    color: rgb(190, 57, 57);
+    font-size: 10px;
+    text-align: left;
+    margin: 3px 0px 10px 100px;
+    display:none;
+}

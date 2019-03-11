@@ -1,0 +1,28 @@
+.bg-gradient-primary{
+    background-color: rgb(5, 109, 99);
+    background-image: unset;
+}
+
+.bg-white{
+    background-color: rgb(41, 42, 46)!important;
+}
+
+.text-white{
+    color: white!important;
+    font-size: initial;
+}
+
+.sidebar-heading{
+    color: white!important;
+}
+
+.btn-primary{
+    background-color: rgb(5, 109, 99);
+    border-color: rgb(5, 109, 99);
+}
+
+.btn-primary:hover{
+    background-color: rgb(5, 109, 99);
+    border-color: rgb(5, 109, 99);
+    color: white;
+}

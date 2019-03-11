@@ -1,0 +1,12 @@
+.bg-secondary{
+    background-color: turquoise!important;
+}
+
+hr.star-dark:after{
+    color: #060606;
+    background-color: #1E1F26;
+}
+
+.color-main{
+    background-color: #1E1F26;
+}

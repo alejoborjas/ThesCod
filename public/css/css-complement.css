@@ -1,0 +1,17 @@
+.bg-primary{
+    background-color: turquoise;
+}
+
+a:hover {
+    background-color: rgb(6, 135, 139);
+}
+
+#formulario-login{
+    width: 500px;
+    background-color: rgb(6, 135, 139);
+    border-radius: 25px;
+    height: 500px;
+    padding: 40px 40px 40px 40px;
+    margin-left: auto;
+    margin-right: auto;
+}

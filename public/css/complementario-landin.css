@@ -1,0 +1,21 @@
+.bg-secondary{
+    background-color: rgb(128, 241, 230)!important;
+}
+
+hr.star-dark:after{
+    color: #060606;
+    background-color: rgb(41, 42, 46);
+}
+
+.color-main{
+    background-color: rgb(41, 42, 46);
+}
+
+.bg-primary{
+    background-color: rgb(5, 109, 99)!important;
+}
+
+hr.star-light:after{
+    color: white;
+    background-color: rgb(5, 109, 99);
+}
