@@ -1,0 +1,64 @@
+<nav style="width:100%"  class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+    <!-- Sidebar Toggle (Topbar) -->
+    <!-- Topbar Navbar -->
+    <ul class="navbar-nav ml-auto">
+
+    <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+      <div class="topbar-divider d-none d-sm-block"></div>
+
+    <!-- Nav Item - User Information -->
+      <li class="nav-item dropdown no-arrow">
+        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="mr-2 d-none d-lg-inline text-white small" id="nombre-usuario" >Nombre usuario</span>
+          
+        </a>
+        <!-- Dropdown - User Information -->
+        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#perfilModal">
+            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+            Mi Perfil
+          </a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+            Cerrar Sesion
+          </a>
+        </div>
+      </li>
+    </ul>
+  </nav>
+
+
+  <!-- Perfil Modal-->
+  <div class="modal fade" id="perfilModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Mi Perfil</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="py-5"  style="text-align:center">
+              <h2 id="perfil">
+              </h2> 
+            </div>
+    
+            <div id="info-config" class="order-md-1">
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+          <a class="btn btn-primary" href="#">Actualizar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="../js/controlador-menu.js"></script>
+  <script>
+    $(document).ready(function(){
+        cargarDatos(); 
+    });
+    </script>

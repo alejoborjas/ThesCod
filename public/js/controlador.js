@@ -1,24 +1,3 @@
-function registrar(){
-    var campos = [
-        {campo:'txt-nombre',valido:false},
-        {campo:'txt-apellido',valido:false},
-        {campo:'txt-email',valido:false},
-        {campo:'txt-password',valido:false},
-        {campo:'txt-password-confirma',valido:false}
-    ];
-    
-    for (var i=0;i<campos.length;i++){
-        campos[i].valido = validarCamposVacio(campos[i].campo);
-    }
-
-    for(var i=0;i<campos.length;i++){
-        if (!campos[i].valido)
-            return;
-    }
-    
-    location.href="login.html";
-}
-
 function validarCamposVacio(campo){
     if (document.getElementById(campo).value ==''){   
         document.getElementById(campo).classList.add('input-error');
@@ -31,18 +10,10 @@ function validarCamposVacio(campo){
     }
 }
 
-function validarCorreo(etiquetaCorreo){
-    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (re.test(etiquetaCorreo.value))
-        etiquetaCorreo.classList.remove('input-error');
-    else
-        etiquetaCorreo.classList.add('input-error');
-
-}
-
-
-function iniciarSesion(){
+function crearUsuario(){
     var campos = [
+        {campo:'txt-nombre',valido:false},
+        {campo:'txt-apellido',valido:false},
         {campo:'txt-email',valido:false},
         {campo:'txt-password',valido:false},
     ];
@@ -55,7 +26,65 @@ function iniciarSesion(){
         if (!campos[i].valido)
             return;
     }
-    
-    
-    location.href="menu.html";
+
+
+    var parametros = {
+        nombre: $("#txt-nombre").val(),
+        apellido: $("#txt-apellido").val(),
+        email: $("#txt-email").val(),
+        password: $("#txt-password").val()
+    };
+    console.log(parametros);
+
+    $.ajax({
+        type: "POST",
+        url: "/user/guardarUsuario",
+        data: parametros,
+        dataType: "json",
+        success:function(res){
+            console.log(res);
+            
+        },
+        error:function(error){
+            console.error(error);
+        }
+    });
 }
+
+
+function logIn(){
+    var campos = [
+           {campo:'txt-email',valido:false},
+           {campo:'txt-password',valido:false}
+       ];
+   
+       for (var i=0;i<campos.length;i++){
+           campos[i].valido = validarCamposVacio(campos[i].campo);
+       }
+   
+       for(var i=0;i<campos.length;i++){
+           if (!campos[i].valido)
+               return;
+       }
+       
+       var parametros = "email="+$("#txt-email").val()+"&password="+$("#txt-password").val();
+       $.ajax({
+           url:"/login",
+           method:"POST",
+           data:parametros,
+           dataType:"json",
+           success:function(res){
+                console.log(res);
+                if (res.status == 1){
+                    window.location = "menu.html";
+                }
+                else {
+                    window.location = "login.html";
+                }
+           },
+           error:function(error){
+               console.error(error);
+           }
+       });
+   
+   }

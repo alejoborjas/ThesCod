@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>ThesCod - Inicio</title>
+  <!-- Custom fonts for this template-->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <!-- Custom styles for this template-->
+  <link href="css/estilos-login-registro.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/complementario-menu.css">
+  <link href="css/estilos-login-registro.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/complementario-menu.css">
+        <style>
+           
+            #htmlEditor{
+                height: 47% !important;
+                width: 45% !important;
+                display: inline-block !important;
+                padding: 100px;
+            }
+            #cssEditor{
+                height: 47% !important;
+                width: 45% !important;
+                display: inline-block !important;
+                padding: 100px;
+            }
+            #javascriptEditor{
+                height: 47% !important;
+                width: 45% !important;
+                display: inline-block !important;
+                padding: 100px;
+            }
+            #result{
+                height: 96% !important;
+                width: 45% !important; 
+                display: inline-block !important;
+                background-color: white !important; 
+                
+            }
+
+            #container{
+                
+                width: auto !important;
+                white-space: nowrap !important;
+                overflow: hidden !important;
+            }
+            
+        </style>
+</head>
+
+<body id="page-top">
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <div class="sidebar"></div>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Topbar -->
+        <div style="padding:0px" class="navbar"></div>
+        <!-- End of Topbar -->
+
+        <!-- Begin Page Content -->
+          <div class="container">
+        <!-- Page Heading -->
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Editor en Linea</h1>
+          </div>
+
+        <!-- Content Row -->
+            <div class="row">
+                <div class="col-12">
+                    <div id="htmlEditor">Soy el Editor HTML</div>
+                    <div id="cssEditor">Soy el Editor CSS</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div id="javascriptEditor">Soy el Editor JS</div>
+        
+                    <iframe id="result" ></iframe>
+                </div>
+            </div>
+        </div>
+    
+            
+      </div>
+      <!-- End of Main Content -->
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Seguro de Cerrar Sesión?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Selecciona "Salir" para confirmar que deseas cerrar tu sesión.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+          <a class="btn btn-primary" href="/logout">Salir</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="js/jquery-3.4.0.min.js"></script>  
+  <script src="js/controlador-menu.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      $('.navbar').load('plantillas/navbar.html');
+      $('.sidebar').load('plantillas/sidebar.html');
+    });
+  </script>
+  <script src="js/jquery-editor.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.3.1/ace.js" type="text/javascript"></script>
+
+  <script>
+      function update(){
+          var res = document.getElementById("result").contentWindow.document;
+          
+          res.open();
+          res.write(eh.getValue());
+          
+          //Obtener valor del editor HTML
+          var editHTML = eh.getValue();
+          console.log(editHTML);
+          
+          res.write('<style>'+ec.getValue()+'</style>');
+          
+          //Obtener valor del editor CSS
+          var editCSS = ec.getValue();
+          console.log(editCSS);
+
+          //Obtener valor del editor JS
+          var editJS = ej.getValue();
+          console.log(editJS);
+
+
+          res.close();
+      };
+      function setEditor(){
+          window.eh = ace.edit("htmlEditor");
+          eh.setTheme("ace/theme/xcode");
+          eh.session.setMode("ace/mode/html"); 
+
+
+          window.ec = ace.edit("cssEditor");
+          ec.setTheme("ace/theme/xcode");
+          ec.session.setMode("ace/mode/css");
+
+          window.ej = ace.edit("javascriptEditor");
+          ej.setTheme("ace/theme/xcode");
+          ej.session.setMode("ace/mode/javascript");
+
+          eh.getSession().on('change', function(){
+              update();
+          });
+
+          ec.getSession().on('change', function(){
+              update();
+          });
+
+          ej.getSession().on('change', function(){
+              update();
+              
+          });
+
+
+      };
+
+      setEditor();
+
+      update();
+      
+  </script>
+</body>
+</html>
